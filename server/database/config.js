@@ -1,1 +1,1 @@
-module.exports = {user: 'student', multipleStatements: true}
+module.exports = {user: 'student', multipleStatements: true};
