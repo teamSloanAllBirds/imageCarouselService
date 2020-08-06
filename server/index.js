@@ -7,7 +7,7 @@ const app = express();
 app.set('port', 5000);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/../public'));
 
 app.get('/api/:productid', (req, res) => {
   let id = req.url.split('/')[2];
