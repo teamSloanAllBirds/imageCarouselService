@@ -56,17 +56,16 @@ class HoverGrid extends React.Component {
   }
 
   render() {
-    let tds = this.props.urls.map((url) => {
-      return <Td><div className='container'><img src={url}></img><Icon icon={plusCircle} className='icon'/></div></Td>;
+    let tds = this.props.urls.map((url, index) => {
+      return <Td key={index}><div className='container'><img src={url}></img><Icon icon={plusCircle} className='icon'/></div></Td>;
     });
     let pairs = tds.reduce((r, v, i) => {
       if (i % 2 === 0) { r.push(tds.slice(i, i + 2)); }
       return r;
     }, []);
-    let rows = pairs.map((pair) => {
-      return <Row>{pair[0]}{pair[1]}</Row>;
+    let rows = pairs.map((pair, index) => {
+      return <Row key ={index}>{pair[0]}{pair[1]}</Row>;
     });
-    console.log(rows);
     return (
       <div>
         <Table>
