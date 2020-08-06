@@ -1,0 +1,26 @@
+{
+  "name": "imagecarouselservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed-db": "node ./server/database/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamSloanAllBirds/imageCarouselService.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teamSloanAllBirds/imageCarouselService/issues"
+  },
+  "homepage": "https://github.com/teamSloanAllBirds/imageCarouselService#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "mysql": "^2.18.1",
+    "react": "^16.13.1"
+  }
+}
