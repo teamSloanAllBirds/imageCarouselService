@@ -3,7 +3,7 @@ const faker = require('faker');
 const fs = require('fs');
 
 const mysqlConfig = require('./config.js');
-const schema = fs.readFileSync('./schema.sql', 'utf-8').replace(/\r|\n/g, '');
+const schema = fs.readFileSync(__dirname + '/schema.sql', 'utf-8').replace(/\r|\n/g, '');
 
 const connection = mysql.createConnection(mysqlConfig);
 
@@ -40,7 +40,7 @@ for (let i = 1; i < 101; i++) {
       console.log(error);
       return;
     } else {
-      for (let j = i; j < i + 10; j++) {
+      for (let j = i; j < i + 8; j++) {
         let k = j > 90 ? j - 90 : j;
         let url = `https://teamsloanpics.s3.us-east-2.amazonaws.com/${pad(k, 3)}.jpeg`;
         let queryString = `INSERT INTO urls (product_id, url) VALUES ('${i}', '${url}');`;
