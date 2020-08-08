@@ -9,6 +9,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.jsx?$/,
         include: path.join(__dirname, '/client/'),
         exclude: /(node_modules)/,

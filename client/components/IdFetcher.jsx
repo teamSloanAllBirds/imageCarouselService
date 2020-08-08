@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-class IdFetcher extends React.Component {
+class IdFetcher extends Component {
 
   constructor(props) {
     super(props);

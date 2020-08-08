@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 
 import { Icon, InlineIcon } from '@iconify/react';
@@ -46,7 +46,7 @@ const Td = styled.td`
   }
 `;
 
-class HoverGrid extends React.Component {
+class HoverGrid extends Component {
 
   constructor(props) {
     super(props);
@@ -57,7 +57,7 @@ class HoverGrid extends React.Component {
 
   render() {
     let tds = this.props.urls.map((url, index) => {
-      return <Td key={index}><div className='container'><img src={url}></img><Icon icon={plusCircle} className='icon'/></div></Td>;
+      return <Td key={index} onClick={this.props.toggleModal}><div className='container'><img src={url}></img><Icon icon={plusCircle} className='icon'/></div></Td>;
     });
     let pairs = tds.reduce((r, v, i) => {
       if (i % 2 === 0) { r.push(tds.slice(i, i + 2)); }

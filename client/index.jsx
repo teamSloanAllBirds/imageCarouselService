@@ -1,22 +1,29 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 
 import IdFetcher from './components/IdFetcher.jsx';
 import HoverGrid from './components/HoverGrid.jsx';
+import CarouselModal from './components/CarouselModal.jsx';
 
-class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      urls: []
+      urls: [],
+      modal: false
     };
+    this.toggleModal = this.toggleModal.bind(this);
     this.fetchId = this.fetchId.bind(this);
   }
 
   componentDidMount() {
     this.fetchId(1);
+  }
+
+  toggleModal() {
+    this.setState({modal: !this.state.modal});
   }
 
   fetchId(id) {
@@ -31,9 +38,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <HoverGrid urls={this.state.urls}/>
+        <CarouselModal urls={this.state.urls} modal={this.state.modal} toggleModal={this.toggleModal}/>
+        <HoverGrid urls={this.state.urls} toggleModal={this.toggleModal}/>
         <br></br>
         <br></br>
+        <div>Modal is: {this.state.modal ? "Open" : "Closed"}</div>
         <br></br>
         <br></br>
         <IdFetcher fetchId={this.fetchId}/>
