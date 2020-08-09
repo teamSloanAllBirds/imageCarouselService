@@ -1,12 +1,15 @@
-import React, {Component} from 'react';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import plusCircle from '@iconify/icons-mdi/plus-circle';
 
-
 const Table = styled.table`
-
 `;
 
 const Row = styled.tr`
@@ -47,25 +50,37 @@ const Td = styled.td`
 `;
 
 class HoverGrid extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {
-      id: ''
-    };
+    this.state = {};
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler(e) {
+    const { selectImage } = this.props;
+    selectImage(e.target.src);
   }
 
   render() {
-    let tds = this.props.urls.map((url, index) => {
-      return <Td key={index} onClick={this.props.toggleModal}><div className='container'><img src={url}></img><Icon icon={plusCircle} className='icon'/></div></Td>;
-    });
-    let pairs = tds.reduce((r, v, i) => {
+    const { urls, toggleModal, selectImage } = this.props;
+    const tds = urls.map((url, index) => (
+      <Td key={index} onClick={toggleModal}>
+        <div className="container">
+          <img alt="pic" src={url} onClick={this.clickHandler} />
+          <Icon icon={plusCircle} className="icon" />
+        </div>
+      </Td>
+    ));
+    const pairs = tds.reduce((r, v, i) => {
       if (i % 2 === 0) { r.push(tds.slice(i, i + 2)); }
       return r;
     }, []);
-    let rows = pairs.map((pair, index) => {
-      return <Row key ={index}>{pair[0]}{pair[1]}</Row>;
-    });
+    const rows = pairs.map((pair, index) => (
+      <Row key={index}>
+        {pair[0]}
+        {pair[1]}
+      </Row>
+    ));
     return (
       <div>
         <Table>

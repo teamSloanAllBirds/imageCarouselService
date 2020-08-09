@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const app = require('../server/index.js');
 const axios = require('axios');
 

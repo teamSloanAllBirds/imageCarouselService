@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+/* eslint-disable import/extensions */
+/* eslint-disable no-console */
+import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 
@@ -7,15 +9,16 @@ import HoverGrid from './components/HoverGrid.jsx';
 import CarouselModal from './components/CarouselModal.jsx';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       urls: [],
-      modal: false
+      modal: false,
+      current: '',
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.fetchId = this.fetchId.bind(this);
+    this.selectImage = this.selectImage.bind(this);
   }
 
   componentDidMount() {
@@ -23,33 +26,46 @@ class App extends Component {
   }
 
   toggleModal() {
-    this.setState({modal: !this.state.modal});
+    this.setState((prevState) => ({ modal: !prevState.modal }));
   }
 
   fetchId(id) {
     axios.get(`/api/${id}`)
-      .then(({data}) => {
-        let urls = data.map(i => i.url);
-        this.setState({urls: urls});
+      .then(({ data }) => {
+        const urls = data.map((i) => i.url);
+        this.setState({ urls });
       })
       .catch((error) => console.log(error));
   }
 
+  selectImage(current) {
+    this.setState({ current });
+  }
+
   render() {
+    const { urls, modal, current } = this.state;
     return (
       <div>
-        <CarouselModal urls={this.state.urls} modal={this.state.modal} toggleModal={this.toggleModal}/>
-        <HoverGrid urls={this.state.urls} toggleModal={this.toggleModal}/>
-        <br></br>
-        <br></br>
-        <div>Modal is: {this.state.modal ? "Open" : "Closed"}</div>
-        <br></br>
-        <br></br>
-        <IdFetcher fetchId={this.fetchId}/>
+        <CarouselModal
+          urls={urls}
+          modal={modal}
+          current={current}
+          toggleModal={this.toggleModal}
+          selectImage={this.selectImage}
+        />
+        <HoverGrid
+          urls={urls}
+          toggleModal={this.toggleModal}
+          selectImage={this.selectImage}
+        />
+        <div>
+          Modal is:
+          {modal ? 'Open' : 'Closed'}
+        </div>
+        <IdFetcher fetchId={this.fetchId} />
       </div>
     );
   }
-
 }
 
 ReactDom.render(<App />, document.getElementById('app'));
