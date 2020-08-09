@@ -62,7 +62,7 @@ class HoverGrid extends Component {
   }
 
   render() {
-    const { urls, toggleModal, selectImage } = this.props;
+    const { urls, toggleModal } = this.props;
     const tds = urls.map((url, index) => (
       <Td key={index} onClick={toggleModal}>
         <div className="container">

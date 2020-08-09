@@ -49,20 +49,6 @@
   padding: 0px;
   height: 100%;
   width: 100%;
-  /* display: inline-block; */
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden */
-}
-
-#current{
-  /* object-fit: fill; */
-  /* width: 100%; */
-/* box-sizing: border-box; */
-/* max-width: 100%; */
-/* max-height: 90%; */
-/* width: 100%; */
 }
 
 #icon {
@@ -136,4 +122,15 @@
   left:50%;
   margin-left:-10px;
   margin-top:-.5px;
+}
+
+#carouselDots {
+  position: absolute;
+  left: 40%;
+  bottom: 10px;
+}
+
+.dot {
+  opacity: .7;
+  margin: 0px;
 }

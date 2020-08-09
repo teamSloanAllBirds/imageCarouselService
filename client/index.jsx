@@ -15,6 +15,7 @@ class App extends Component {
       urls: [],
       modal: false,
       current: '',
+      currentIndex: 0,
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.fetchId = this.fetchId.bind(this);
@@ -39,17 +40,24 @@ class App extends Component {
   }
 
   selectImage(current) {
-    this.setState({ current });
+    const { urls } = this.state;
+    this.setState({ current, currentIndex: urls.indexOf(current) });
   }
 
   render() {
-    const { urls, modal, current } = this.state;
+    const {
+      urls,
+      modal,
+      current,
+      currentIndex,
+    } = this.state;
     return (
       <div>
         <CarouselModal
           urls={urls}
           modal={modal}
           current={current}
+          currentIndex={currentIndex}
           toggleModal={this.toggleModal}
           selectImage={this.selectImage}
         />
