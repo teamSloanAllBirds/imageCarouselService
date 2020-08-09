@@ -1,28 +1,34 @@
 /* #container {
-  display: inline-block;
 } */
 
 .ReactModal__Overlay {
   opacity: 1;
-  animation: bounce .6s;
 }
 
 .ReactModal__Overlay--after-open {
-  background: rgba(0, 0, 0, 0.7);
   opacity: 1;
   transform: translateX(0px);
+  animation: back .4s, bounce .6s;
+  /* animation: back .2s; */
+  /* background: rgba(0, 0, 0, 0.7); */
+}
+
+@keyframes back {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+  }
 }
 
 @keyframes bounce {
   0% {
     transform: translateY(35%);
-    /* opacity: 0; */
-    /* animation-timing-function: ease-out; */
   }
   50% {
     opacity: 1;
     transform: translateY(0%);
-    /* animation-timing-function: ease-in; */
   }
   75% {
     transform: translateY(1%);
@@ -42,7 +48,7 @@
 .modal {
   padding: 0px;
   height: 100%;
-  width: 100%
+  width: 100%;
   /* display: inline-block; */
   /* display: flex;
   justify-content: center;
@@ -91,4 +97,43 @@
   to {
     transform:rotate(-90deg);
   }
+}
+
+#rightArrowDiv{
+  position: absolute;
+  box-sizing: border-box;
+  right: 8px;
+  top: 50%;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.rightChevron {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-10px;
+  margin-top:-.5px;
+}
+
+#leftArrowDiv{
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.leftChevron {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-10px;
+  margin-top:-.5px;
 }
