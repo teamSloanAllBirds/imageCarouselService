@@ -1,0 +1,136 @@
+/* #container {
+} */
+
+.ReactModal__Overlay {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transform: translateX(0px);
+  animation: back .4s, bounce .6s;
+  /* animation: back .2s; */
+  /* background: rgba(0, 0, 0, 0.7); */
+}
+
+@keyframes back {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(35%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(1%);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(0%);
+    animation-timing-function: ease-in;
+  }
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 1;
+  transform: translateX(-100px);
+}
+
+.modal {
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+#icon {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  opacity: .7;
+  cursor: pointer;
+}
+
+.xiconspin {
+  animation: spin .3s;
+}
+
+.xiconunspin {
+  animation: unspin .3s;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(90deg);
+  }
+}
+
+@keyframes unspin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(-90deg);
+  }
+}
+
+#rightArrowDiv{
+  position: absolute;
+  box-sizing: border-box;
+  right: 8px;
+  top: 50%;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.rightChevron {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-10px;
+  margin-top:-.5px;
+}
+
+#leftArrowDiv{
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.leftChevron {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-10px;
+  margin-top:-.5px;
+}
+
+#carouselDots {
+  position: absolute;
+  left: 40%;
+  bottom: 10px;
+}
+
+.dot {
+  opacity: .7;
+  margin: 0px;
+}

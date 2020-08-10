@@ -1,5 +1,6 @@
 const mysql = require('mysql');
-const mysqlConfig = {user: 'student', database: 'imageurls'};
+
+const mysqlConfig = { user: 'student', database: 'imageurls' };
 
 const connection = mysql.createConnection(mysqlConfig);
 
@@ -12,10 +13,10 @@ connection.connect((error) => {
 });
 
 const fetchURLs = (id, callback) => {
-  let queryString = `SELECT url FROM  urls WHERE product_id='${id}';`;
+  const queryString = `SELECT url FROM  urls WHERE product_id='${id}';`;
   connection.query(queryString, (error, result) => {
     if (error) {
-      console.log('error at the url fetch:' + error);
+      console.log('error at the url fetch:', error);
     } else {
       callback(null, result);
     }
@@ -23,5 +24,5 @@ const fetchURLs = (id, callback) => {
 };
 
 module.exports = {
-  fetchURLs
+  fetchURLs,
 };
