@@ -126,11 +126,28 @@
 
 #carouselDots {
   position: absolute;
-  left: 40%;
+  left: 45%;
   bottom: 10px;
+}
+
+#dotsTable {
+  table-layout: fixed;
+}
+
+#dotsTable td {
+  max-width: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.bigDot {
+  opacity: .7;
+  margin: 0px -15px -5px -15px;
 }
 
 .dot {
   opacity: .7;
-  margin: 0px;
+  margin: -5px;
 }

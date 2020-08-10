@@ -60,7 +60,7 @@ class CarouselModal extends Component {
       toggleModal,
     } = this.props;
     const { xHover, counter, modalMeasurement } = this.state;
-    const dots = urls.map((c, index) => <InlineIcon icon={dotIcon} key={c} className="dot" color="gray" height={index === currentIndex ? '40' : '20'} width={index === currentIndex ? '40' : '20'} />);
+    const dots = urls.map((c, index) => <td key={c}><InlineIcon icon={dotIcon} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '40' : '20'} width={index === currentIndex ? '40' : '20'} /></td>);
     return (
       <div id="container">
         <Modal
@@ -99,7 +99,13 @@ class CarouselModal extends Component {
               <Icon icon={bxsChevronRight} className="rightChevron" id="icon" width="20" height="20" />
             </div>
             <div id="carouselDots">
-              {dots}
+              <table id="dotsTable">
+                <tbody>
+                  <tr>
+                    {dots}
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <img id="current" alt="current" src={current} width="100%" height="100%" />
           </div>
