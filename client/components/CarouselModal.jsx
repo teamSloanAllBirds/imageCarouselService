@@ -69,7 +69,7 @@ class CarouselModal extends Component {
       toggleModal,
     } = this.props;
     const { xHover, counter, modalMeasurement } = this.state;
-    const dots = urls.map((c, index) => <td key={c}><InlineIcon icon={dotIcon} data-index={index} onClick={this.pickFromDot} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '40' : '20'} width={index === currentIndex ? '40' : '20'} /></td>);
+    const dots = urls.map((c, index) => <td key={c}><div className={index === currentIndex ? 'selectedDot' : 'unSelectedDot'}><InlineIcon icon={dotIcon} data-index={index} onClick={this.pickFromDot} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '20' : '20'} width={index === currentIndex ? '20' : '20'} /></div></td>);
     return (
       <div id="container">
         <Modal

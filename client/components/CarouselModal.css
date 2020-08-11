@@ -139,17 +139,31 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  vertical-align: middle;
   cursor: pointer;
+}
+
+.selectedDot {
+  /* margin: -5px 0 0 0 ; */
+  margin: -5px 0 0 0;
+  overflow: hidden;
+  transition: transform 1s ease;
+  transform: scale(2.0);
+}
+
+.unSelectedDot {
+  transition: transform .5s ease;
+  transform: scale(1.0);
 }
 
 .bigDot {
   opacity: .7;
-  margin: 0px -15px -5px -15px;
-  transition: .5s;
+  margin: -5px;
+  /* margin: 0px -15px -5px -15px; */
 }
 
 .dot {
   opacity: .7;
   margin: -5px;
+  transition: 0s;
 }
+
