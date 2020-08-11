@@ -28,6 +28,10 @@ const Td = styled.td`
     height: 250px;
   }
 
+  img:hover, .icon:hover {
+    cursor: pointer;
+  }
+
   .icon{
     position: absolute;
     display:none;
