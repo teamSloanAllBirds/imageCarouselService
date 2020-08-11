@@ -18,7 +18,7 @@
     background: rgba(0, 0, 0, 0);
   }
   100% {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 5, 0.7);
   }
 }
 
@@ -126,11 +126,30 @@
 
 #carouselDots {
   position: absolute;
-  left: 40%;
+  left: 45%;
   bottom: 10px;
+}
+
+#dotsTable {
+  table-layout: fixed;
+}
+
+#dotsTable td {
+  max-width: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.bigDot {
+  opacity: .7;
+  margin: 0px -15px -5px -15px;
+  transition: .5s;
 }
 
 .dot {
   opacity: .7;
-  margin: 0px;
+  margin: -5px;
 }

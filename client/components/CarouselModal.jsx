@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-nested-ternary */
@@ -25,6 +26,7 @@ class CarouselModal extends Component {
     this.updateDimensions = this.updateDimensions.bind(this);
     this.nextImage = this.nextImage.bind(this);
     this.prevImage = this.prevImage.bind(this);
+    this.pickFromDot = this.pickFromDot.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +53,13 @@ class CarouselModal extends Component {
     selectImage(urls[currentIndex === 0 ? urls.length - 1 : currentIndex - 1]);
   }
 
+  pickFromDot(e) {
+    if (e.target.dataset.index) {
+      const { urls, selectImage } = this.props;
+      selectImage(urls[e.target.dataset.index]);
+    }
+  }
+
   render() {
     const {
       urls,
@@ -60,7 +69,7 @@ class CarouselModal extends Component {
       toggleModal,
     } = this.props;
     const { xHover, counter, modalMeasurement } = this.state;
-    const dots = urls.map((c, index) => <InlineIcon icon={dotIcon} key={c} className="dot" color="gray" height={index === currentIndex ? '40' : '20'} width={index === currentIndex ? '40' : '20'} />);
+    const dots = urls.map((c, index) => <td key={c}><InlineIcon icon={dotIcon} data-index={index} onClick={this.pickFromDot} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '40' : '20'} width={index === currentIndex ? '40' : '20'} /></td>);
     return (
       <div id="container">
         <Modal
@@ -99,7 +108,13 @@ class CarouselModal extends Component {
               <Icon icon={bxsChevronRight} className="rightChevron" id="icon" width="20" height="20" />
             </div>
             <div id="carouselDots">
-              {dots}
+              <table id="dotsTable">
+                <tbody>
+                  <tr>
+                    {dots}
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <img id="current" alt="current" src={current} width="100%" height="100%" />
           </div>
