@@ -167,3 +167,27 @@
   transition: 0s;
 }
 
+img {
+  height: 100%;
+  width: 100%;
+}
+
+.displayed {
+  display: block;
+}
+
+.notDisplayed {
+  display: none;
+}
+
+.next {
+  display: none;
+  transition: all 2s ease;
+  transform: translateX(-100%);
+}
+
+.previous {
+  display: flex;
+  transition: all 2s ease;
+  transform: translateX(100%);
+}

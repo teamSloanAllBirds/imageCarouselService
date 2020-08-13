@@ -70,6 +70,7 @@ class CarouselModal extends Component {
     } = this.props;
     const { xHover, counter, modalMeasurement } = this.state;
     const dots = urls.map((c, index) => <td key={c}><div className={index === currentIndex ? 'selectedDot' : 'unSelectedDot'}><InlineIcon icon={dotIcon} data-index={index} onClick={this.pickFromDot} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '20' : '20'} width={index === currentIndex ? '20' : '20'} /></div></td>);
+    const images = urls.map((c, index) => <img src={c} className={index === currentIndex ? 'displayed' : index === currentIndex + 1 ? 'next' : index === currentIndex - 1 ? 'previous' : 'notDisplayed'}/>)
     return (
       <div id="container">
         <Modal
@@ -116,7 +117,8 @@ class CarouselModal extends Component {
                 </tbody>
               </table>
             </div>
-            <img id="current" alt="current" src={current} width="100%" height="100%" />
+            {/* <img id="current" alt="current" src={urls[currentIndex]} /> */}
+            {images}
           </div>
         </Modal>
       </div>
