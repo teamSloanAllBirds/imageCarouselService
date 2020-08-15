@@ -62,17 +62,19 @@ class HoverGrid extends Component {
 
   clickHandler(e) {
     const { selectImage } = this.props;
-    selectImage(e.target.src);
+    selectImage(parseInt(e.target.dataset.index, 10));
   }
 
   render() {
     const { urls, toggleModal } = this.props;
     const tds = urls.map((url, index) => (
       <Td key={index} onClick={toggleModal}>
-        <div className="container">
-          <img alt="pic" src={url} onClick={this.clickHandler} />
-          <Icon icon={plusCircle} className="icon" />
-        </div>
+        <a href={`#slide-${index}`}>
+          <div className="container">
+            <img alt="pic" src={url} data-index={index} onClick={this.clickHandler} />
+            <Icon icon={plusCircle} className="icon" />
+          </div>
+        </a>
       </Td>
     ));
     const pairs = tds.reduce((r, v, i) => {

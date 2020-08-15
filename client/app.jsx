@@ -17,6 +17,8 @@ class App extends Component {
       modal: false,
       current: '',
       currentIndex: 0,
+      previousIndex: 7,
+      nextIndex: 1,
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.fetchId = this.fetchId.bind(this);
@@ -42,7 +44,17 @@ class App extends Component {
 
   selectImage(current) {
     const { urls } = this.state;
-    this.setState({ current, currentIndex: urls.indexOf(current) });
+    const currentIndex = parseInt(current, 10);
+    const nextIndex = currentIndex === urls.length - 1 ? 0 : currentIndex + 1;
+    const previousIndex = currentIndex === 0 ? urls.length - 1 : currentIndex - 1;
+    setTimeout(() => {
+      this.setState({
+        current: urls[currentIndex],
+        currentIndex,
+        previousIndex,
+        nextIndex,
+      });
+    }, 0);
   }
 
   render() {
@@ -51,6 +63,8 @@ class App extends Component {
       modal,
       current,
       currentIndex,
+      nextIndex,
+      previousIndex,
     } = this.state;
     return (
       <div>
@@ -59,6 +73,8 @@ class App extends Component {
           urls={urls}
           modal={modal}
           current={current}
+          nextIndex={nextIndex}
+          previousIndex={previousIndex}
           currentIndex={currentIndex}
           toggleModal={this.toggleModal}
           selectImage={this.selectImage}
