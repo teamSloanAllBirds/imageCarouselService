@@ -98,6 +98,7 @@
   z-index: 10;
   position: absolute;
   box-sizing: border-box;
+  opacity: .7;
   right: 18px;
   top: 50%;
   background-color: white;
@@ -118,6 +119,7 @@
 #leftArrowDiv{
   z-index: 10;
   position: absolute;
+  opacity: .7;
   left: 18px;
   top: 50%;
   background-color: white;
