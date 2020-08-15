@@ -14,9 +14,12 @@ class App extends Component {
     super(props);
     this.state = {
       urls: [],
+      descriptions: [],
       modal: false,
       current: '',
       currentIndex: 0,
+      previousIndex: 7,
+      nextIndex: 1,
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.fetchId = this.fetchId.bind(this);
@@ -34,23 +37,37 @@ class App extends Component {
   fetchId(id) {
     axios.get(`/api/${id}`)
       .then(({ data }) => {
-        const urls = data.map((i) => i.url);
-        this.setState({ urls });
+        const urls = data.urls.map((i) => i.url);
+        const descriptions = data.descriptions.map((j) => j);
+        this.setState({ urls, descriptions });
       })
       .catch((error) => console.log(error));
   }
 
   selectImage(current) {
     const { urls } = this.state;
-    this.setState({ current, currentIndex: urls.indexOf(current) });
+    const currentIndex = parseInt(current, 10);
+    const nextIndex = currentIndex === urls.length - 1 ? 0 : currentIndex + 1;
+    const previousIndex = currentIndex === 0 ? urls.length - 1 : currentIndex - 1;
+    setTimeout(() => {
+      this.setState({
+        current: urls[currentIndex],
+        currentIndex,
+        previousIndex,
+        nextIndex,
+      });
+    }, 0);
   }
 
   render() {
     const {
       urls,
+      descriptions,
       modal,
       current,
       currentIndex,
+      nextIndex,
+      previousIndex,
     } = this.state;
     return (
       <div>
@@ -59,6 +76,8 @@ class App extends Component {
           urls={urls}
           modal={modal}
           current={current}
+          nextIndex={nextIndex}
+          previousIndex={previousIndex}
           currentIndex={currentIndex}
           toggleModal={this.toggleModal}
           selectImage={this.selectImage}
@@ -70,6 +89,7 @@ class App extends Component {
         />
         <MidPageImages
           urls={urls}
+          descriptions={descriptions}
         />
         <div>
           Modal is:

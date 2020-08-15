@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -45,18 +46,19 @@ class CarouselModal extends Component {
 
   nextImage() {
     const { urls, currentIndex, selectImage } = this.props;
-    selectImage(urls[currentIndex === urls.length - 1 ? 0 : currentIndex + 1]);
+    selectImage(currentIndex === urls.length - 1 ? 0 : currentIndex + 1);
   }
 
   prevImage() {
     const { urls, currentIndex, selectImage } = this.props;
-    selectImage(urls[currentIndex === 0 ? urls.length - 1 : currentIndex - 1]);
+    const newIndex = currentIndex === 0 ? urls.length - 1 : currentIndex - 1;
+    selectImage(newIndex);
   }
 
   pickFromDot(e) {
     if (e.target.dataset.index) {
-      const { urls, selectImage } = this.props;
-      selectImage(urls[e.target.dataset.index]);
+      const { selectImage } = this.props;
+      selectImage(parseInt(e.target.dataset.index, 10));
     }
   }
 
@@ -64,12 +66,32 @@ class CarouselModal extends Component {
     const {
       urls,
       modal,
-      current,
       currentIndex,
+      nextIndex,
+      previousIndex,
       toggleModal,
     } = this.props;
     const { xHover, counter, modalMeasurement } = this.state;
-    const dots = urls.map((c, index) => <td key={c}><div className={index === currentIndex ? 'selectedDot' : 'unSelectedDot'}><InlineIcon icon={dotIcon} data-index={index} onClick={this.pickFromDot} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '20' : '20'} width={index === currentIndex ? '20' : '20'} /></div></td>);
+    const dots = urls.map((c, index) => <td key={c}><a href={`#slide-${index}`}><div className={index === currentIndex ? 'selectedDot' : 'unSelectedDot'}><InlineIcon icon={dotIcon} onClick={this.pickFromDot} data-index={index} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '20' : '20'} width={index === currentIndex ? '20' : '20'} /></div></a></td>);
+    const images = urls.map((c, index) => <div key={c} id={`slide-${index}`}><img alt="pic" src={c} className="displayed" /></div>);
+    const rightArrow = (
+      <div>
+        <a href={`#slide-${nextIndex}`}>
+          <div id="rightArrowDiv" onClick={this.nextImage}>
+            <Icon icon={bxsChevronRight} className="rightChevron" id="icon" width="20" height="20" />
+          </div>
+        </a>
+      </div>
+    );
+    const leftArrow = (
+      <div>
+        <a href={`#slide-${previousIndex}`}>
+          <div id="leftArrowDiv" onClick={this.prevImage}>
+            <Icon icon={bxsChevronLeft} className="leftChevron" id="icon" width="20" height="20" />
+          </div>
+        </a>
+      </div>
+    );
     return (
       <div id="container">
         <Modal
@@ -101,12 +123,8 @@ class CarouselModal extends Component {
         >
           <div className="modal">
             <Icon icon={xIcon} onMouseEnter={this.hoverHandler} onMouseLeave={this.hoverHandler} onClick={toggleModal} className={!xHover && counter === 0 ? null : xHover ? 'xiconspin' : 'xiconunspin'} id="icon" width="40" height="40" />
-            <div id="leftArrowDiv" onClick={this.prevImage}>
-              <Icon icon={bxsChevronLeft} className="leftChevron" id="icon" width="20" height="20" />
-            </div>
-            <div id="rightArrowDiv" onClick={this.nextImage}>
-              <Icon icon={bxsChevronRight} className="rightChevron" id="icon" width="20" height="20" />
-            </div>
+            {leftArrow}
+            {rightArrow}
             <div id="carouselDots">
               <table id="dotsTable">
                 <tbody>
@@ -116,7 +134,9 @@ class CarouselModal extends Component {
                 </tbody>
               </table>
             </div>
-            <img id="current" alt="current" src={current} width="100%" height="100%" />
+            <div className="slides">
+              {images}
+            </div>
           </div>
         </Modal>
       </div>

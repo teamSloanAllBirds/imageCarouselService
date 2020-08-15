@@ -14,14 +14,12 @@ const RowTable = styled.table`
 
 const BiggerDiv = styled.div`
   overflow: hidden;
-  border: 1px solid red;
   max-height: 300px;
   width: 40vw;
   max-width: 400px;
 `;
 
 const SmallerDiv = styled.div`
-  border: 1px solid blue;
   height: 100%;
   width: 35vw;
   max-width: 350px;
@@ -29,7 +27,20 @@ const SmallerDiv = styled.div`
 
 const TextContainer = styled.div`
   font-family: 'Meticula';
-  padding: 20%;
+  font-size: 15px;
+  padding: 20% 15% 20% 15%;
+`;
+
+const SubtextOne = styled.div`
+  font-family: 'Meticula-SemiBold';
+  font-size: 15px;
+  margin-bottom: 10px;
+`;
+
+const SubtextTwo = styled.div`
+  font-family: 'Meticula-Bold';
+  font-size: 20px;
+  margin-bottom: 20px;
 `;
 
 const ImageContainer = styled.div`
@@ -45,7 +56,7 @@ const ImageContainer = styled.div`
   }
 `;
 
-function MidPageImages({ urls }) {
+function MidPageImages({ urls, descriptions }) {
   const rows = urls.map((url, index) => {
     if (index % 2 === 0) {
       return (
@@ -57,7 +68,13 @@ function MidPageImages({ urls }) {
                   <td>
                     <SmallerDiv>
                       <TextContainer>
-                        This is the sample text in a font
+                        <SubtextOne>
+                          {descriptions[index].subtext_one}
+                        </SubtextOne>
+                        <SubtextTwo>
+                          {descriptions[index].subtext_two}
+                        </SubtextTwo>
+                        {descriptions[index].features}
                       </TextContainer>
                     </SmallerDiv>
                   </td>
@@ -91,7 +108,13 @@ function MidPageImages({ urls }) {
                 <td>
                   <SmallerDiv>
                     <TextContainer>
-                      This is the sample text in a font
+                      <SubtextOne>
+                        {descriptions[index].subtext_one}
+                      </SubtextOne>
+                      <SubtextTwo>
+                        {descriptions[index].subtext_two}
+                      </SubtextTwo>
+                      {descriptions[index].features}
                     </TextContainer>
                   </SmallerDiv>
                 </td>
