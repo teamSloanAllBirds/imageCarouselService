@@ -12,11 +12,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/api/:productid', (req, res) => {
   const id = req.url.split('/')[2];
-  db.fetchURLs(id, (error, result) => {
+  db.fetchURLs(id, (error, urls) => {
     if (error) {
       console.log('error retrieving product id:', error);
     } else {
-      res.status(200).json(result);
+      db.fetchDescriptions(id, (err, descriptions) => {
+        if (error) {
+          console.log('error retrieving descriptions for product id', err);
+        } else {
+          res.status(200).json({ urls, descriptions });
+        }
+      });
     }
   });
 });

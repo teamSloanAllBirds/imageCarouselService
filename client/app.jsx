@@ -14,6 +14,7 @@ class App extends Component {
     super(props);
     this.state = {
       urls: [],
+      descriptions: [],
       modal: false,
       current: '',
       currentIndex: 0,
@@ -36,8 +37,9 @@ class App extends Component {
   fetchId(id) {
     axios.get(`/api/${id}`)
       .then(({ data }) => {
-        const urls = data.map((i) => i.url);
-        this.setState({ urls });
+        const urls = data.urls.map((i) => i.url);
+        const descriptions = data.descriptions.map((j) => j);
+        this.setState({ urls, descriptions });
       })
       .catch((error) => console.log(error));
   }
@@ -60,6 +62,7 @@ class App extends Component {
   render() {
     const {
       urls,
+      descriptions,
       modal,
       current,
       currentIndex,
@@ -86,6 +89,7 @@ class App extends Component {
         />
         <MidPageImages
           urls={urls}
+          descriptions={descriptions}
         />
         <div>
           Modal is:

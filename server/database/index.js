@@ -21,6 +21,18 @@ const fetchURLs = (id, callback) => {
   });
 };
 
+const fetchDescriptions = (id, callback) => {
+  const queryString = `SELECT subtext_one, subtext_two, features FROM descriptions WHERE product_id='${id}';`;
+  connection.query(queryString, (error, result) => {
+    if (error) {
+      console.log('error at the description fetch:', error);
+    } else {
+      callback(null, result);
+    }
+  });
+};
+
 module.exports = {
   fetchURLs,
+  fetchDescriptions,
 };

@@ -15,3 +15,11 @@ CREATE TABLE urls (
   url varchar(100),
   FOREIGN KEY (product_id) REFERENCES products(id)
 );
+
+CREATE TABLE descriptions (
+  product_id int,
+  subtext_one varchar(50),
+  subtext_two varchar(50),
+  features varchar(100),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+)
