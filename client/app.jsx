@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import axios from 'axios';
 
