@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-nested-ternary */
@@ -72,7 +70,15 @@ class CarouselModal extends Component {
       toggleModal,
     } = this.props;
     const { xHover, counter, modalMeasurement } = this.state;
-    const dots = urls.map((c, index) => <td key={c}><a href={`#slide-${index}`}><div className={index === currentIndex ? 'selectedDot' : 'unSelectedDot'}><InlineIcon icon={dotIcon} onClick={this.pickFromDot} data-index={index} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height={index === currentIndex ? '20' : '20'} width={index === currentIndex ? '20' : '20'} /></div></a></td>);
+    const dots = urls.map((c, index) => (
+      <td key={c}>
+        <a href={`#slide-${index}`}>
+          <div className={index === currentIndex ? 'selectedDot' : 'unSelectedDot'}>
+            <InlineIcon icon={dotIcon} onClick={this.pickFromDot} data-index={index} className={index === currentIndex ? 'bigDot' : 'dot'} color="gray" height="20" width="20" />
+          </div>
+        </a>
+      </td>
+    ));
     const images = urls.map((c, index) => <div key={c} id={`slide-${index}`}><img alt="pic" src={c} className="displayed" /></div>);
     const rightArrow = (
       <div>
@@ -90,6 +96,11 @@ class CarouselModal extends Component {
             <Icon icon={bxsChevronLeft} className="leftChevron" id="icon" width="20" height="20" />
           </div>
         </a>
+      </div>
+    );
+    const exit = (
+      <div className="exitIcon">
+        <Icon icon={xIcon} onMouseEnter={this.hoverHandler} onMouseLeave={this.hoverHandler} onClick={toggleModal} className={!xHover && counter === 0 ? null : xHover ? 'xiconspin' : 'xiconunspin'} id="icon" width="40" height="40" />
       </div>
     );
     return (
@@ -122,7 +133,7 @@ class CarouselModal extends Component {
           }}
         >
           <div className="modal">
-            <Icon icon={xIcon} onMouseEnter={this.hoverHandler} onMouseLeave={this.hoverHandler} onClick={toggleModal} className={!xHover && counter === 0 ? null : xHover ? 'xiconspin' : 'xiconunspin'} id="icon" width="40" height="40" />
+            {exit}
             {leftArrow}
             {rightArrow}
             <div id="carouselDots">
