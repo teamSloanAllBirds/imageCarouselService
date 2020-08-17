@@ -55,7 +55,7 @@ npm run build
 
 # React Component Breakdown
 
-## App
+## App Component
 
 ### Child React Components
   - HoverGrid
