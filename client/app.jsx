@@ -17,8 +17,8 @@ class App extends Component {
       modal: false,
       current: '',
       currentIndex: 0,
-      previousIndex: 7,
       nextIndex: 1,
+      previousIndex: 7,
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.fetchId = this.fetchId.bind(this);
