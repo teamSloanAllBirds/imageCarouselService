@@ -35,6 +35,13 @@ npm install
 ```
 
 ### Seeding the Database
+
+Inside the ./server/database directory, add a config.js
+
+```sh
+module.exports = {user: 'YOUR_USERNAME_HERE', multipleStatements: true};
+```
+
 ```sh
 npm run seed-db
 ```
