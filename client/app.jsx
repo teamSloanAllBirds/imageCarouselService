@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   fetchId(id) {
-    axios.get(`/api/${id}`)
+    axios.get(`/api/images/${id}`)
       .then(({ data }) => {
         const urls = data.urls.map((i) => i.url);
         const descriptions = data.descriptions.map((j) => j);

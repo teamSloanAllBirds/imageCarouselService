@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/api/:productid', (req, res) => {
-  const id = req.url.split('/')[2];
+app.get('/api/images/:productid', (req, res) => {
+  const id = req.url.split('/')[3];
   db.fetchURLs(id, (error, urls) => {
     if (error) {
       console.log('error retrieving product id:', error);

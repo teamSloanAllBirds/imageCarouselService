@@ -36,7 +36,7 @@ npm install
 
 ### Seeding the Database
 
-Inside the ./server/database directory, add a config.js
+Inside the ./server/database directory, modify the provided config.js to resemble:
 
 ```sh
 module.exports = {user: 'YOUR_USERNAME_HERE', multipleStatements: true};
@@ -50,14 +50,14 @@ npm run seed-db
 
 From within the root directory:
 
-Run the nodemon server:
-```sh
-npm run start
-```
-
 Run webpack:
 ```sh
 npm run build
+```
+
+Run the nodemon server:
+```sh
+npm run start
 ```
 
 # React Component Breakdown

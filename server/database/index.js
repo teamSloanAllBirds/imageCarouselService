@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 
 const mysqlConfig = require('./config.js');
+
 mysqlConfig.database = 'imageurls';
 
 const connection = mysql.createConnection(mysqlConfig);
