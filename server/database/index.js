@@ -1,6 +1,5 @@
 const mysql = require('mysql');
-
-const mysqlConfig = { user: 'student', database: 'imageurls' };
+const mysqlConfig = require('./config.js');
 
 const connection = mysql.createConnection(mysqlConfig);
 
