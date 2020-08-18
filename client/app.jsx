@@ -2,11 +2,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Fonts from './assets/Fonts.jsx';
 import IdFetcher from './components/IdFetcher.jsx';
 import HoverGrid from './components/HoverGrid.jsx';
 import CarouselModal from './components/CarouselModal.jsx';
-import MidPageImages from './components/MidPageImages.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -61,7 +59,6 @@ class App extends Component {
   render() {
     const {
       urls,
-      descriptions,
       modal,
       current,
       currentIndex,
@@ -70,7 +67,6 @@ class App extends Component {
     } = this.state;
     return (
       <div>
-        <Fonts />
         <CarouselModal
           urls={urls}
           modal={modal}
@@ -86,14 +82,6 @@ class App extends Component {
           toggleModal={this.toggleModal}
           selectImage={this.selectImage}
         />
-        <MidPageImages
-          urls={urls}
-          descriptions={descriptions}
-        />
-        <div>
-          Modal is:
-          {modal ? 'Open' : 'Closed'}
-        </div>
         <IdFetcher fetchId={this.fetchId} />
       </div>
     );
