@@ -24,8 +24,10 @@ const Td = styled.td`
   }
 
   img {
-    width: 250px;
-    height: 250px;
+    width: 30vw;
+    max-width: 350px;
+    height: 30vw;
+    max-height: 350px;
   }
 
   img:hover, .icon:hover {
@@ -44,8 +46,8 @@ const Td = styled.td`
   div:hover .icon {
     display: block;
     opacity: .5;
-    top: 105px;
-    left: 105px;
+    top: 45%;
+    left: 45%;
   }
 
   div: hover .icon:hover {
