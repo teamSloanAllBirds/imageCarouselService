@@ -24,7 +24,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.fetchId(1);
+    console.log(window.location.pathname)
+    this.fetchId(window.location.pathname === '/' ? '/1' : window.location.pathname);
   }
 
   toggleModal() {
@@ -32,7 +33,7 @@ class App extends Component {
   }
 
   fetchId(id) {
-    axios.get(`/api/images/${id}`)
+    axios.get(`/api/images${id}`)
       .then(({ data }) => {
         const urls = data.urls.map((i) => i.url);
         const descriptions = data.descriptions.map((j) => j);
@@ -82,7 +83,7 @@ class App extends Component {
           toggleModal={this.toggleModal}
           selectImage={this.selectImage}
         />
-        <IdFetcher fetchId={this.fetchId} />
+        {/* <IdFetcher fetchId={this.fetchId} /> */}
       </div>
     );
   }

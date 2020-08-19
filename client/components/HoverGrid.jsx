@@ -9,7 +9,14 @@ import styled from 'styled-components';
 import { Icon } from '@iconify/react';
 import plusCircle from '@iconify/icons-mdi/plus-circle';
 
+// width: 30vw;
+// height: 30vw;
+// max-width: 350px;
+// max-height: 350px;
+
 const Table = styled.table`
+  width: 100%;
+  max-width: 800px;
 `;
 
 const Row = styled.tr`
@@ -24,10 +31,8 @@ const Td = styled.td`
   }
 
   img {
-    width: 30vw;
+    min-width: 200px;
     max-width: 350px;
-    height: 30vw;
-    max-height: 350px;
   }
 
   img:hover, .icon:hover {
