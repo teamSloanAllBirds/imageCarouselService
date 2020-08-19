@@ -79,7 +79,7 @@ class CarouselModal extends Component {
         </a>
       </td>
     ));
-    const images = urls.map((c, index) => <div key={c} id={`slide-${index}`}><img alt="pic" src={c} className="displayed" /></div>);
+    const images = urls.map((c, index) => <div className="sneakerPicture" key={c} id={`slide-${index}`}><img alt="pic" src={c} className="displayed" /></div>);
     const rightArrow = (
       <div>
         <a href={`#slide-${nextIndex}`}>
