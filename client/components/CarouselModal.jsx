@@ -81,7 +81,7 @@ class CarouselModal extends Component {
     ));
     const images = urls.map((c, index) => <div className="sneakerPicture" key={c} id={`slide-${index}`}><img alt="pic" src={c} className="displayed" /></div>);
     const rightArrow = (
-      <div>
+      <div className="arrowContainer">
         <a href={`#slide-${nextIndex}`}>
           <div id="rightArrowDiv" onClick={this.nextImage}>
             <Icon icon={bxsChevronRight} className="rightChevron" id="icon" width="20" height="20" />
@@ -90,7 +90,7 @@ class CarouselModal extends Component {
       </div>
     );
     const leftArrow = (
-      <div>
+      <div className="arrowContainer">
         <a href={`#slide-${previousIndex}`}>
           <div id="leftArrowDiv" onClick={this.prevImage}>
             <Icon icon={bxsChevronLeft} className="leftChevron" id="icon" width="20" height="20" />

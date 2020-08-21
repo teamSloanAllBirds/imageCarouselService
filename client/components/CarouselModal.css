@@ -218,3 +218,8 @@
   color: inherit;
   text-decoration: inherit;
 }
+
+.arrowContainer > a {
+  color: inherit;
+  text-decoration: inherit;
+}
