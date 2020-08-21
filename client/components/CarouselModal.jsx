@@ -118,7 +118,7 @@ class CarouselModal extends Component {
               backgroundColor: 'rgba(0, 0, 0, 0.75)',
             },
             content: {
-              top: '5%',
+              top: '7%',
               bottom: '5%',
               height: modalMeasurement,
               width: modalMeasurement,
