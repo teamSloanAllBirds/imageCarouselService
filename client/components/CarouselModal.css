@@ -179,7 +179,7 @@
   transition: 0s;
 }
 
-img {
+.sneakerPicture > img {
   height: 100%;
   width: 100%;
 }
@@ -215,6 +215,11 @@ img {
 }
 
 .container > a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.arrowContainer > a {
   color: inherit;
   text-decoration: inherit;
 }

@@ -16,7 +16,7 @@ import plusCircle from '@iconify/icons-mdi/plus-circle';
 
 const Table = styled.table`
   width: 100%;
-  max-width: 800px;
+  max-width: 700px;
 `;
 
 const Row = styled.tr`
@@ -31,8 +31,8 @@ const Td = styled.td`
   }
 
   img {
-    min-width: 200px;
-    max-width: 350px;
+    min-width: 100%;
+    max-width: 100%;
   }
 
   img:hover, .icon:hover {
